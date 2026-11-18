@@ -1,4 +1,5 @@
-/* The site builds this deck into dist/, outside the deck, and Vite empties an outDir outside the root only when told. */
+/* The site clears dist/ itself before it builds anything. Saying so here only keeps
+   Vite from warning that an outDir outside the project root was left alone. */
 export default {
   build: { emptyOutDir: true },
 }

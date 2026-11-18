@@ -11,6 +11,8 @@ scripts/                          deck runner, overflow check, zh-TW lint
 
 ## Quick start
 
+Node 24, pnpm 10 and uv.
+
 ```bash
 pnpm install
 pnpm dev nthuislab
@@ -18,12 +20,12 @@ pnpm dev nthuislab
 
 Any part of a deck's directory name will do, as long as it picks out one deck.
 
+Commit hooks, which also lint Traditional Chinese prose with `zhtw-mcp`, installed separately and on `PATH`:
+
 ```bash
 uv sync
 uv run pre-commit install
 ```
-
-Traditional Chinese prose is linted with `zhtw-mcp`, which is installed separately and must be on `PATH`.
 
 ## Commands
 
@@ -50,10 +52,14 @@ Traditional Chinese prose is linted with `zhtw-mcp`, which is installed separate
 
 ## Publishing
 
-`main` deploys to GitHub Pages.
-Each deck is served at `/<directory>/` with a hash router, since Pages has no SPA fallback.
-The root is a plain list of the decks for now.
+`main` deploys to GitHub Pages, each deck at `/<directory>/` and a plain list of them at the root.
+The build makes the share card's URL absolute and adds the tags Slidev leaves out.
+Delete a deck's `og-image.png` and run `pnpm site` to shoot the card again.
 
-Each deck carries its own `og-image.png`, shot from the slide `preview` names and committed, so no deployment needs a browser.
-Delete it and run `pnpm site` to shoot it again.
-The build makes the card's URL absolute and adds the tags Slidev leaves out.
+To see the deployed paths locally, pass the same flags the workflow does:
+
+```bash
+node site/build.mjs --base /slides/ --origin https://yuto0226.dev
+```
+
+`pnpm site:serve` serves `dist/` at the root, so a build made with a `--base` will not resolve under it.

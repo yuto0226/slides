@@ -23,16 +23,11 @@ Anything a second deck would want belongs in the theme instead.
 - Name who did something in the body.
   A footnote proves the citation exists; it does not tell the audience whose result it is.
 - The share card is a slide, not a graphic.
-  `preview` names it, `pnpm site` shoots it, and the `og-image.png` it leaves is committed.
-  A deck sets no `seoMeta`: the build owns those tags, and Slidev replaces that whole object rather than merging it key by key.
+  `preview` names it and `pnpm site` shoots it.
+  The `og-image.png` it leaves is committed, because a runner without CJK fonts would shoot one full of tofu.
+  A deck sets no `seoMeta`: the card's absolute URL is known only to the build, and its size has no headmatter key at all.
 - Run `pnpm fit` before calling a deck done.
   A deck that builds has not been shown to fit.
-
-## Subagents
-
-Every subagent carries an explicit `model`.
-Choose the tier from the bottom up: haiku for searches, script runs and mechanical edits, sonnet for scoped implementation and review, the default model for a root cause nobody has located.
-Keep a survey's fact-gathering below the judgement made on it.
 
 ## Commits
 
@@ -45,5 +40,5 @@ Every commit leaves `pnpm build` passing.
 
 Plain declarative sentences.
 No comment that the code and its names already say; a comment earns its place by naming a constraint from outside the code, the mathematics behind a figure, or a choice that reads as wrong until explained.
-Prose in `README.md`, `AGENTS.md` and `docs/` is written one sentence per line, which is what `rumdl` enforces.
-Traditional Chinese follows `zhtw-mcp`; the hook blocks on the mechanical rules and prints the rest.
+Prose in `README.md` and `AGENTS.md` is written one sentence per line, which is what `rumdl` enforces.
+A deck's Traditional Chinese follows `zhtw-mcp`; the hook blocks on the mechanical rules and prints the rest.
