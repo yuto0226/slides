@@ -30,8 +30,8 @@ importers:
   decks/2026-11-18-nthuislab-process-injection:
     dependencies:
       '@yuto0226/flourish':
-        specifier: ^1.0.1
-        version: 1.0.1(markdown-it@15.0.3)
+        specifier: ^1.0.2
+        version: 1.0.2(markdown-it@15.0.3)
     devDependencies:
       '@slidev/cli':
         specifier: ^53.1.0
@@ -1212,8 +1212,8 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
-  '@yuto0226/flourish@1.0.1':
-    resolution: {integrity: sha512-elYqlK7JdgPrz4tDIf20gE5Iz6dPxgAPxLCMT3ypbbCNtcY4kyxEtJm50Li5VhUc3RVQS08X8MNgwQeI+/h7Bw==}
+  '@yuto0226/flourish@1.0.2':
+    resolution: {integrity: sha512-IzgjFL33QyhCgEVEZCrKn3htZ49RzoV5OUtXgw5ogC34+TD7waM0u0bm+ltCo/9O34eLVmaIhsykwV0re8iedw==}
     engines: {slidev: '>=53.0.0'}
 
   acorn-jsx@5.3.2:
@@ -5085,7 +5085,7 @@ snapshots:
     dependencies:
       vue: 3.5.45(typescript@6.0.3)
 
-  '@yuto0226/flourish@1.0.1(markdown-it@15.0.3)':
+  '@yuto0226/flourish@1.0.2(markdown-it@15.0.3)':
     dependencies:
       '@iconify-json/carbon': 1.2.30
       '@iconify-json/fa6-brands': 1.2.6

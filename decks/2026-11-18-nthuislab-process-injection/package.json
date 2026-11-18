@@ -9,7 +9,7 @@
     "export": "slidev export slides.md"
   },
   "dependencies": {
-    "@yuto0226/flourish": "^1.0.1"
+    "@yuto0226/flourish": "^1.0.2"
   },
   "devDependencies": {
     "@slidev/cli": "^53.1.0",
