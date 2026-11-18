@@ -1,0 +1,15 @@
+{
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 100,
+  "endOfLine": "lf",
+  "plugins": ["prettier-plugin-slidev"],
+  "overrides": [
+    {
+      "files": ["decks/**/slides.md"],
+      "options": {
+        "parser": "slidev"
+      }
+    }
+  ]
+}

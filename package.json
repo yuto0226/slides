@@ -1,0 +1,34 @@
+{
+  "name": "slides",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Talks given, as Slidev decks",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.2",
+  "scripts": {
+    "dev": "node scripts/deck.mjs dev",
+    "build": "node scripts/deck.mjs build",
+    "export": "node scripts/deck.mjs export",
+    "site": "node site/build.mjs",
+    "site:serve": "pnpm dlx serve dist",
+    "fit": "node scripts/fit.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "zhtw": "node scripts/zhtw.mjs"
+  },
+  "devDependencies": {
+    "@slidev/parser": "^53.1.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-vue": "^10.12.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-slidev": "^1.0.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "playwright-chromium"
+    ]
+  }
+}

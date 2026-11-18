@@ -1,0 +1,15 @@
+node_modules/
+# Every deck builds its own, and so does the site, so this stays unanchored.
+dist/
+
+*.pdf
+*.pptx
+export/
+.slidev/
+
+.venv/
+__pycache__/
+.ruff_cache/
+.rumdl_cache/
+
+.env
