@@ -9,7 +9,7 @@ const correctness = {
 
 export default [
   {
-    ignores: ['**/node_modules/**', '**/dist/**', '**/.venv/**', '**/*.ts'],
+    ignores: ['**/dist/**', '**/.venv/**', '**/*.ts'],
   },
   ...vue.configs['flat/essential'],
   {

@@ -24,15 +24,14 @@ repos:
       - id: ruff-format
 
   # rumdl reflows prose sentence-per-line and rejects repeated top-level
-  # headings; both corrupt a deck. The repository's own prose only, never a
-  # deck's research notes under decks/<name>/docs/.
+  # headings; both corrupt a deck, so it sees the repository's own prose only.
   - repo: https://github.com/rvben/rumdl-pre-commit
     rev: v0.2.78
     hooks:
       - id: rumdl-fmt
-        files: ^(README\.md|AGENTS\.md|docs/.*\.md)$
+        files: ^(README|AGENTS)\.md$
       - id: rumdl-check
-        files: ^(README\.md|AGENTS\.md|docs/.*\.md)$
+        files: ^(README|AGENTS)\.md$
 
   - repo: local
     hooks:
@@ -49,15 +48,8 @@ repos:
         files: ^decks/[^/]+/slides\.md$
 
       # zhtw-mcp is installed outside this repository and must be on PATH.
-      # A plain lint exits 0 even with warnings, so the gate is explicit.
-      - id: zhtw
-        name: zhtw-mcp (zh-TW prose)
-        entry: zhtw-mcp lint --content-type markdown --max-warnings 0
-        language: system
-        files: ^docs/.*\.md$
-
       # A deck's frontmatter is YAML, which the linter reads as prose, so this
-      # feeds it the slide bodies alone. The flags live in the script.
+      # feeds it the slide bodies alone.
       - id: zhtw-deck
         name: zhtw-mcp (zh-TW prose, deck)
         entry: node scripts/zhtw.mjs
