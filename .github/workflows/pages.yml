@@ -36,6 +36,7 @@ jobs:
       - run: >
           node site/build.mjs
           --base ${{ steps.pages.outputs.base_path }}
+          --origin ${{ steps.pages.outputs.origin }}
           --repo ${{ github.server_url }}/${{ github.repository }}
 
       - uses: actions/upload-pages-artifact@v3
