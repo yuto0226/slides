@@ -22,6 +22,9 @@ Anything a second deck would want belongs in the theme instead.
   The theme renders children quieter, which is what makes that reading work.
 - Name who did something in the body.
   A footnote proves the citation exists; it does not tell the audience whose result it is.
+- The share card is a slide, not a graphic.
+  `preview` names it, `pnpm site` shoots it, and the `og-image.png` it leaves is committed.
+  A deck sets no `seoMeta`: the build owns those tags, and Slidev replaces that whole object rather than merging it key by key.
 - Run `pnpm fit` before calling a deck done.
   A deck that builds has not been shown to fit.
 

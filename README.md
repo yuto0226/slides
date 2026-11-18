@@ -43,11 +43,17 @@ Traditional Chinese prose is linted with `zhtw-mcp`, which is installed separate
 
 1. Copy an existing directory under `decks/` to `<date>-<occasion>-<topic>`, the date being the day of the talk.
 2. Set `name` in its `package.json` to `deck-<directory>`.
-3. Give `slides.md` a `title` and a `subtitle`; the index reads both.
-4. `pnpm install`, then `pnpm dev <part of the name>`.
+3. Give `slides.md` a `title`, a `subtitle` and an `info`; the index reads the first two and `info` becomes the page description.
+4. Add `preview: <n>` for the slide the share card should show, if the cover is not it.
+5. `pnpm install`, then `pnpm dev <part of the name>`.
+6. Run `pnpm site` once and commit the `og-image.png` it leaves in the deck.
 
 ## Publishing
 
 `main` deploys to GitHub Pages.
 Each deck is served at `/<directory>/` with a hash router, since Pages has no SPA fallback.
 The root is a plain list of the decks for now.
+
+Each deck carries its own `og-image.png`, shot from the slide `preview` names and committed, so no deployment needs a browser.
+Delete it and run `pnpm site` to shoot it again.
+The build makes the card's URL absolute and adds the tags Slidev leaves out.
