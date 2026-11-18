@@ -10,9 +10,14 @@ permissions:
   pages: write
   id-token: write
 
+# A deployment already under way is left to finish.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
+
+# The card of every deck is committed, so no deployment launches a browser.
+env:
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
 jobs:
   build:
@@ -33,11 +38,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      # A user site reports an empty base path, which unquoted would eat the next flag.
       - run: >
           node site/build.mjs
-          --base ${{ steps.pages.outputs.base_path }}
-          --origin ${{ steps.pages.outputs.origin }}
-          --repo ${{ github.server_url }}/${{ github.repository }}
+          --base "${{ steps.pages.outputs.base_path }}"
+          --origin "${{ steps.pages.outputs.origin }}"
 
       - uses: actions/upload-pages-artifact@v3
         with:
