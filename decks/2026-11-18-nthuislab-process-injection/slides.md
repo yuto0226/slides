@@ -2,8 +2,10 @@
 theme: '@yuto0226/flourish'
 titleTemplate: '%s'
 layout: cover
-title: 20261118 NTHU ISLab 讀書會
+title: NTHU ISLab 讀書會
 subtitle: 2026-11-18 · Yuto
+info: Di Pietro et al., ASIA CCS 2025 導讀：野外的 process injection 與偵測條件
+preview: 5
 ---
 
 # NTHU ISLab 讀書會
