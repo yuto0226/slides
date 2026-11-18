@@ -6,6 +6,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+# Only pnpm fit launches a browser, and that is run by hand.
+env:
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -23,5 +27,7 @@ jobs:
       - run: pnpm format:check
       - run: pnpm lint
 
-      # Every deck, so a broken component fails here and not on the pages run.
-      - run: pnpm build
+      # The same build the deployment runs, so a pull request covers that path.
+      # A push to main skips it, because the pages run builds the same decks.
+      - if: github.event_name != 'push'
+        run: node site/build.mjs
