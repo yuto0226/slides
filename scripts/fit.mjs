@@ -1,21 +1,16 @@
 import { spawn } from 'node:child_process'
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
+import { readFileSync } from 'node:fs'
 import { createRequire } from 'node:module'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import { parse } from '@slidev/parser'
-
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const decksDir = path.join(root, 'decks')
+import { deckDir, listDecks, slidevCli } from './decks.mjs'
 
 const fail = (message) => {
   console.error(message)
   process.exit(1)
 }
 
-const decks = readdirSync(decksDir).filter((name) =>
-  existsSync(path.join(decksDir, name, 'slides.md')),
-)
+const decks = listDecks()
 const named = process.argv[2]
 if (named && !decks.includes(named)) fail(`no deck named ${named}\n  ${decks.join('\n  ')}`)
 const chosen = named ? [named] : decks
@@ -56,9 +51,8 @@ async function ready(url, deadline) {
 
 let bad = 0
 for (const deck of chosen) {
-  const dir = path.join(decksDir, deck)
-  const cli = path.join(dir, 'node_modules', '@slidev', 'cli', 'bin', 'slidev.mjs')
-  if (!existsSync(cli)) fail(`${deck} has no Slidev; run pnpm install`)
+  const dir = deckDir(deck)
+  const cli = slidevCli(dir)
 
   const require = createRequire(path.join(dir, 'package.json'))
   const { chromium } = require('playwright-chromium')
